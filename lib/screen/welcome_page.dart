@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sunday_training/core/style_text.dart';
 import 'package:sunday_training/main.dart';
+import 'package:sunday_training/screen/chat_screen.dart';
 
 import '../core/config/get_it_config.dart';
 

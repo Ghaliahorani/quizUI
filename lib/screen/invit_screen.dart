@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sunday_training/core/style_text.dart';
+import 'package:sunday_training/screen/chat_screen.dart';
 
 class InvitScreen extends StatelessWidget {
   const InvitScreen({super.key});
@@ -11,7 +12,12 @@ class InvitScreen extends StatelessWidget {
         backgroundColor: Colors.black,
         appBar: AppBar(
           backgroundColor: Colors.grey[400],
-          leading: Icon(Icons.arrow_back_ios),
+          leading: InkWell(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ChatScreen()));
+              },
+              child: Icon(Icons.arrow_back_ios)),
           title: Center(
             child: Text(
               "Invite Friends",
@@ -36,7 +42,7 @@ class InvitScreen extends StatelessWidget {
               height: 200,
               decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: Image.asset("assets/images/image1.png").image)),
+                      image: Image.asset('assets/images/img.png').image)),
             ),
             Padding(
               padding: const EdgeInsets.all(30),

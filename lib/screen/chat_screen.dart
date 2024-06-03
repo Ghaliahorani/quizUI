@@ -14,15 +14,20 @@ class ChatScreen extends StatelessWidget {
       backgroundColor: Colors.black,
       appBar: AppBar(
         leading: InkWell(
-            onTap: () => (context) => WelcomePage(),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => WelcomePage()));
+            },
             child: Icon(
               Icons.arrow_back_ios,
               size: 30,
             )),
         backgroundColor: Colors.grey[200],
-        title: Text(
-          "Invite Friends",
-          style: secound,
+        title: Center(
+          child: Text(
+            "Invite Friends",
+            style: first,
+          ),
         ),
         actions: [
           Container(
@@ -36,7 +41,7 @@ class ChatScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          FutureBuilder<List<ChatRiideModel>>(
+          FutureBuilder(
             future: ChatServiceImpl().getChat(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
@@ -81,8 +86,16 @@ class ChatScreen extends StatelessWidget {
                                 leading: Image.network(chat[index].image),
                                 title: Text(
                                   chat[index].name,
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.w400),
                                 ),
-                                subtitle: Text(chat[index].message),
+                                subtitle: Text(chat[index].message,
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w200)),
                               );
                             }),
                       )
@@ -123,7 +136,11 @@ class ChatScreen extends StatelessWidget {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => InvitScreen()));
         },
-        child: Icon(Icons.add),
+        child: Container(
+            width: 30,
+            height: 30,
+            decoration: BoxDecoration(color: Colors.white),
+            child: Icon(Icons.add)),
       ),
     );
   }
